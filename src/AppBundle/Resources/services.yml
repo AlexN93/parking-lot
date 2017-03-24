@@ -1,0 +1,8 @@
+parameters:
+    app.parkinglot.handler.class: AppBundle\Handler\ParkingLotHandler
+    app.parkinglot.class: AppBundle\Entity\ParkingLot
+
+services:
+    app.parkinglot.handler:
+        class: '%app.parkinglot.handler.class%'
+        arguments: ['@doctrine.orm.entity_manager', '%app.parkinglot.class%', '@form.factory', '@service_container']

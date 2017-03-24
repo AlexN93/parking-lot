@@ -1,0 +1,39 @@
+<?php
+$reqType = false;
+if (isset($_SERVER['argv'][1]) && isset($_SERVER['argv'][2])) {
+    $input_file = $_SERVER['argv'][1];
+    $output_file = $_SERVER['argv'][2];
+    $reqType = true;
+
+    unset($_SERVER['argv'][1]);
+    unset($_SERVER['argv'][2]);
+
+    print($input_file);
+    print($output_file);
+}
+
+
+require_once 'vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
+
+$console = new Application('CLI with the Symfony2 Console Component', '0.1.0');
+
+if ($reqType) {
+    print('file command');
+    /*$console->addCommands(array(
+        new Cli\Command\FileCommand(),
+    ));
+    $console->setDefaultCommand('file', true);
+    $input = new ArrayInput(array('postedAdvertId' => 1));
+    $console->run($input);*/
+}
+else {
+    $console->addCommands(array(
+        new Cli\Command\InteractiveCommand(),
+    ));
+    $console->setDefaultCommand('interactive', true);
+    $console->run();
+}
+

@@ -1,0 +1,6 @@
+Array
+(
+    [0] => my_program
+    [1] => file_inputs.txt
+)
+file_inputs.txtYou chose s
