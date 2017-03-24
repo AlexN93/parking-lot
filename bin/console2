@@ -7,11 +7,7 @@ if (isset($_SERVER['argv'][1]) && isset($_SERVER['argv'][2])) {
 
     unset($_SERVER['argv'][1]);
     unset($_SERVER['argv'][2]);
-
-    print($input_file);
-    print($output_file);
 }
-
 
 require_once 'vendor/autoload.php';
 
@@ -21,15 +17,16 @@ use Symfony\Component\Console\Input\ArrayInput;
 $console = new Application('CLI with the Symfony2 Console Component', '0.1.0');
 
 if ($reqType) {
-    print('file command');
-    /*$console->addCommands(array(
+    // php my_program file_inputs.txt output.txt
+    $console->addCommands(array(
         new Cli\Command\FileCommand(),
     ));
     $console->setDefaultCommand('file', true);
-    $input = new ArrayInput(array('postedAdvertId' => 1));
-    $console->run($input);*/
+    $input = new ArrayInput(array('input_file' => $input_file, 'output_file' => $output_file));
+    $console->run($input);
 }
 else {
+    // php my_program
     $console->addCommands(array(
         new Cli\Command\InteractiveCommand(),
     ));

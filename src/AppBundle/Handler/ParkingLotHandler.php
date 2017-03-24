@@ -82,7 +82,7 @@ class ParkingLotHandler
 
     private function parkCar($params, $response) {
         if ($this->parkingLot != null && isset($params[1]) && isset($params[2])) {
-            if (strlen($params[1]) > 12 && in_array($params[2], $this->colors)) {
+            if (strlen($params[1]) > 5 && in_array($params[2], $this->colors)) {
                 if (count($this->parkingLot->getCars()) < $this->parkingLot->getSpace()) {
                     $car = new Car();
                     $car->setNumber($params[1]);

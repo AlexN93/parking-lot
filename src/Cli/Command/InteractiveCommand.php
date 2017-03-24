@@ -1,6 +1,6 @@
 <?php
+
 namespace Cli\Command;
-//$question = new Question("What is your language?\n", 'english');
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -11,9 +11,6 @@ use AppBundle\Handler\ParkingLotHandler;
 
 class InteractiveCommand extends Command
 {
-
-//    private $array = array(1,2,3,4);
-
     protected function configure()
     {
         $this->setName('interactive');
@@ -31,15 +28,8 @@ class InteractiveCommand extends Command
         $helper = $this->getHelper('question');
         $question = new Question("Input:\n", 'english');
         $input = $helper->ask($input, $output, $question);
-
-//        array_push($this->array, 5);
-
         $outputData = $handler->command($input);
         $output->writeln('Output:');
         $output->writeln($outputData['message']);
     }
-
-
-
-
 }
